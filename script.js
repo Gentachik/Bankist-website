@@ -35,5 +35,16 @@ const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
-  section1.scrollIntoView({ behavior: 'smooth' });
+  section1.scrollIntoView({
+    behavior: 'smooth'
+  });
 });
+
+document.querySelectorAll('.nav__link').addEventListener('click', function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+})
