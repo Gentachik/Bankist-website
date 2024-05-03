@@ -86,3 +86,24 @@ const hadleHover = function (e) {
 nav.addEventListener('mouseover', hadleHover.bind(0.5));
 
 nav.addEventListener('mouseout', hadleHover.bind(1));
+
+//Sticky navigation
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickiNav = function (entries) {
+  const [entry] = entries;
+  if (!entry.isIntersecting)
+    nav.classList.add('sticky');
+  else
+    nav.classList.remove('sticky');
+}
+
+const headerObeserver = new IntersectionObserver(
+  stickiNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`
+}
+);
+headerObeserver.observe(header);
